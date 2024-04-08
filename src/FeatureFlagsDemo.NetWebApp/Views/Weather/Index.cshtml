@@ -1,0 +1,46 @@
+﻿@model WeatherViewModel
+
+@{
+    ViewBag.Title = "Weather";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Weather</h1>
+    </div>
+
+</div>
+
+<div>
+    <form asp-action="GetCurrentWeather" asp-controller="Weather" method="post">
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" asp-for="Location">Enter UK Postcode</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="Location" class="form-control" id="location">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@if (Model.Report != null)
+{
+    <div class="row mt-4">
+        <div class="alert alert-primary">
+
+            <p class="fw-bold">
+                Weather report for: @Model.Report.Location.Name, @Model.Report.Location.Region, @Model.Report.Location.Country
+            </p>
+
+            <p>
+                Overview: @Model.Report.Current.Condition.Text <img src="@Model.Report.Current.Condition.Icon" alt="@Model.Report.Current.Condition.Text" />
+                <br />
+                Temperature: @Model.Report.Current.temp_c °C
+                <br />
+                Wind: @Model.Report.Current.wind_mph mph
+                <br />
+                Humidity: @Model.Report.Current.humidity %
+            </p>
+        </div>
+    </div>    
+}

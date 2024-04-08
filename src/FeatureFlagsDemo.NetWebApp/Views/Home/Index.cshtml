@@ -1,0 +1,19 @@
+﻿@model WelcomeViewModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Frankie the Feature Flagger</h1>
+    <p><i>Flagging features like a pro!</i></p>
+</div>
+
+@if(Model.ShowWelcomeMessage)
+{
+    <div class="alert alert-info text-center">
+        <h4 class="alert-heading">Welcome!</h4>
+        <p>Frankie says: @Model.WelcomeMessage</p>
+    </div>
+}
